@@ -1,0 +1,477 @@
+<!-- created by rose -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hamidshax Music Player</title>
+    <style>
+        /* created by rose */
+
+        body {
+            background: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: 2px double black;
+            margin-right: 15px;
+        }
+
+
+        .title {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, yellow, black);
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .song-list {
+            padding: 10px;
+        }
+
+        .song {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid gray;
+            cursor: pointer;
+        }
+
+        .song img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .song-details {
+            flex-grow: 1;
+        }
+
+        .song-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .song-artist {
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .player {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px;
+            margin: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+
+        .player-top {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .player img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+        }
+
+        .rotate {
+            animation: rotate 5s linear infinite;
+        }
+
+        .player-details {
+            flex-grow: 1;
+        }
+
+        .player-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .player-artist {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .pause-btn {
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            padding-left: 10px;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #progress {
+            flex-grow: 1;
+            height: 5px;
+            background: #444;
+            accent-color: #00c6ff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #current-time,
+        #duration {
+            font-size: 12px;
+            color: #ccc;
+            min-width: 40px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title"><img id="logo"
+            src="https://yt3.googleusercontent.com/owjGM9FzIAIKkIUKJtlisDyTpWP4RZdeLaRP-7Zkj7UbJfYNpEIH94y_Q2fQq-p8Gcod1zJE9Q=s160-c-k-c0x00ffffff-no-rj">
+        Hamidshax Music Player
+    </div>
+
+    <div class="song-list">
+        <div class="song"
+            onclick="playSong('aboutyou.mp3', 'About You', 'Hamidshax', 'https://img.youtube.com/vi/d6F7YH8rAz8/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/d6F7YH8rAz8/hqdefault.jpg" alt="Let You Down">
+            <div class="song-details">
+                <div class="song-title">About You</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('cosmos.mp3', 'Cosmos', 'Hamidshax', 'https://img.youtube.com/vi/WA5vfDGBmwI/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/WA5vfDGBmwI/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Cosmos</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('destiny.mp3', 'Destiny', 'Hamidshax', 'https://img.youtube.com/vi/B1kTWHM-Wzg/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/B1kTWHM-Wzg/hqdefault.jpg" alt="Beautiful">
+            <div class="song-details">
+                <div class="song-title">Destiny</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('dontbesad.mp3', 'Dont be sad', 'Hamidshax', 'https://img.youtube.com/vi/IDAOCUQ7izo/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/IDAOCUQ7izo/hqdefault.jpg" alt="Beautiful">
+            <div class="song-details">
+                <div class="song-title">Don't be Sad</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('dreams.mp3', 'Dreams', 'Hamidshax', 'https://img.youtube.com/vi/LIufVUUu4P4/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/LIufVUUu4P4/hqdefault.jpg" alt="Beautiful">
+            <div class="song-details">
+                <div class="song-title">Dreams</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('havana.mp3', 'Havana', 'Hamidshax', 'https://img.youtube.com/vi/ooV2iqqXJVE/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/ooV2iqqXJVE/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Havana</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('lavanda.mp3', 'Lavanada', 'Hamidshax', 'https://img.youtube.com/vi/ioBqUTb4jGk/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/ioBqUTb4jGk/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Lavanada</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('imlost.mp3', 'Im lost', 'Hamidshax', 'https://img.youtube.com/vi/ORIoKDUPRdM/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/ORIoKDUPRdM/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">I'm lost</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('loveme.mp3', 'Love me', 'Hamidshax', 'https://img.youtube.com/vi/BuTH3Cr0KSY/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/BuTH3Cr0KSY/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Love me</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('ultimate.mp3', 'Ultimate', 'Hamidshax', 'https://img.youtube.com/vi/8WgSCMkmFWE/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/8WgSCMkmFWE/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Ultimate</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('sunshine.mp3', 'Sunshine', 'Hamidshax', 'https://img.youtube.com/vi/Vv76O-s6zGI/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/Vv76O-s6zGI/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Sunshine</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('nomore.mp3', 'No more', 'Hamidshax', 'https://img.youtube.com/vi/uWVkjEv9DOw/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/uWVkjEv9DOw/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">No more</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('unknown.mp3', 'Unknown', 'Hamidshax', 'https://img.youtube.com/vi/wjgCXnR-r2g/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/wjgCXnR-r2g/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Unknown</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('secrets.mp3', 'Secrets', 'Hamidshax', 'https://img.youtube.com/vi/rnX8lnByw-U/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/rnX8lnByw-U/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Secrets</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('shadow.mp3', 'Shadow', 'Hamidshax', 'https://img.youtube.com/vi/7vGlFmAmI0M/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/7vGlFmAmI0M/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Shadow</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+
+        <div class="song"
+            onclick="playSong('marvelous.mp3', 'Marvelous', 'Hamidshax', 'https://img.youtube.com/vi/qmAtZnq82jE/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/qmAtZnq82jE/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Marvelous</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('promises.mp3', 'Promises', 'Hamidshax', 'https://img.youtube.com/vi/okTeMEbIGG0/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/okTeMEbIGG0/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Promises</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('together.mp3', 'Together', 'Hamidshax', 'https://img.youtube.com/vi/zxxY6pGLzLU/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/zxxY6pGLzLU/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Together</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('timeless.mp3', 'Timeless', 'Hamidshax', 'https://img.youtube.com/vi/tKSGmhXIMNs/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/tKSGmhXIMNs/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Timeless</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('hellolove.mp3', 'Hello Love', 'Hamidshax', 'https://img.youtube.com/vi/_Qm0dT5tvqI/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/_Qm0dT5tvqI/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Hello Love</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('thisislove.mp3', 'Tnis is Love', 'Hamidshax', 'https://img.youtube.com/vi/k6JGzdkMA-8/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/k6JGzdkMA-8/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">This is Love</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('brokenheart.mp3', 'Broken Heart', 'Hamidshax', 'https://img.youtube.com/vi/xWeYchZU9UU/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/xWeYchZU9UU/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Broken Heart</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('farewell.mp3', 'Farewell', 'Hamidshax & Azimov', 'https://img.youtube.com/vi/Tt9sHaGgkkQ/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/Tt9sHaGgkkQ/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Farewell</div>
+                <div class="song-artist">Hamidshax & Azimov</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('waitforme.mp3', 'Wait For Me', 'Hamidshax', 'https://img.youtube.com/vi/S_yUdjt4lRg/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/S_yUdjt4lRg/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Wait For Me</div>
+                <div class="song-artist">Hamidshax</div>
+            </div>
+        </div>
+
+        <div class="song"
+            onclick="playSong('wainmaady.mp3', 'Wain Maady', 'Hamidshax & Aziza', 'https://img.youtube.com/vi/pVumLVuodyA/hqdefault.jpg')">
+            <img src="https://img.youtube.com/vi/pVumLVuodyA/hqdefault.jpg" alt="Industry Baby">
+            <div class="song-details">
+                <div class="song-title">Wain Maady</div>
+                <div class="song-artist">Hamidshax & Aziza</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <div class="player-top">
+            <img id="player-thumb" src="https://img.youtube.com/vi/d6F7YH8rAz8/hqdefault.jpg" alt="Current Song">
+            <div class="player-details">
+                <div id="player-title" class="player-title">About You</div>
+                <div id="player-artist" class="player-artist">Hamidshax</div>
+            </div>
+            <div class="pause-btn" onclick="togglePlay()">⏸</div>
+        </div>
+        <div class="progress-container">
+            <span id="current-time">00:00</span>
+            <input type="range" id="progress" value="0" min="0" max="100">
+            <span id="duration">00:00</span>
+        </div>
+        <audio id="audio" src="" autoplay></audio>
+    </div>
+
+    <script>
+        // created by rose 
+
+        const audio = document.getElementById('audio');
+        const playerThumb = document.getElementById('player-thumb');
+        const playerTitle = document.getElementById('player-title');
+        const playerArtist = document.getElementById('player-artist');
+        const pauseBtn = document.querySelector('.pause-btn');
+        const progress = document.getElementById('progress');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+
+        function formatTime(sec) {
+            const minutes = Math.floor(sec / 60);
+            const seconds = Math.floor(sec % 60);
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function playSong(src, title, artist, thumbnail) {
+            audio.src = src;
+            audio.play();
+            playerThumb.src = thumbnail;
+            playerTitle.textContent = title;
+            playerArtist.textContent = artist;
+            playerThumb.classList.add('rotate');
+            pauseBtn.textContent = '⏸';
+        }
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playerThumb.classList.add('rotate');
+                pauseBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playerThumb.classList.remove('rotate');
+                pauseBtn.textContent = '▶';
+            }
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            if (!isNaN(audio.duration)) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progress.value = percent;
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                durationEl.textContent = formatTime(audio.duration);
+            }
+        });
+
+        progress.addEventListener('input', () => {
+            const seekTime = (progress.value / 100) * audio.duration;
+            audio.currentTime = seekTime;
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+    </script>
+</body>
+</html>
